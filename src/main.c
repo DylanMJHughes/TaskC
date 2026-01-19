@@ -1,6 +1,8 @@
 // This code is written in C17 standard.
 #include <stdio.h>
 
+#include "task.h"
+
 
 static void print_menu(void) {
     printf("TaskC\n");
@@ -16,6 +18,11 @@ static void print_menu(void) {
 
 
 int main(void) {
+
+    Task tasks[TASKS_MAX];
+    int task_count = 0;
+    int next_id = 1;
+
    int choice = -1;
 
    while (choice !=0) {
