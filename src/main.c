@@ -81,7 +81,7 @@ int main(void) {
                 add_task(tasks, &task_count, &next_id);
                 break;
             case 2:
-                printf("List Tasks (next step). Current count=%d\n", task_count);
+                list_tasks(tasks, task_count);
                 break;
             case 0:
                 printf("Exiting...\n");
