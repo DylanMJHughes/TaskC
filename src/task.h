@@ -12,9 +12,10 @@ typedef struct {
     int completed; // 0 for incomplete, 1 for completed
 } Task;
 
-//fuction declaration 
+//function declarations
+void add_task(Task tasks[], int *task_count, int *next_id);
 void list_tasks(const Task tasks[], int task_count);
 
-#endif // TASK_H
+#endif
 
 
