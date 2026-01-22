@@ -38,6 +38,12 @@ int main(void) {
             case 2:
                 list_tasks(tasks, task_count);
                 break;
+            case 3:
+            mark_task_completed(tasks, task_count);
+                break;
+            case 4:
+            delete_task(tasks, &task_count);
+                break;
             case 0:
                 printf("Exiting...\n");
                 break;

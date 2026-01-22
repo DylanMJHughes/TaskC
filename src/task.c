@@ -61,3 +61,68 @@ void add_task(Task tasks[], int *task_count, int *next_id) {
 
     printf("Added task #%d.\n", t.id);
 }
+
+static int find_task_index_by_id(const Task tasks[], int task_count, int id) {
+    for (int i = 0; i < task_count; i++) {
+        if (tasks[i].id == id) {
+            return i;
+        }
+    }
+    return -1;
+}
+
+void mark_task_completed(Task tasks[], int task_count) {
+    if (task_count == 0) {
+        printf("No tasks to mark.\n");
+        return;
+    }
+
+    int id;
+    printf("Enter task ID to mark as completed: ");
+    if (scanf("%d", &id) != 1) {
+        int c;
+        while ((c = getchar()) != '\n' && c != EOF) {}
+        printf("Invalid input.\n");
+        return;
+    }
+
+    int index = find_task_index_by_id(tasks, task_count, id);
+    if (index == -1) {
+        printf("Task with ID %d not found.\n", id);
+        return;
+    }
+
+    tasks[index].completed = 1;
+    printf("Task #%d marked as completed.\n", id);
+}
+
+void delete_task(Task tasks[], int *task_count) {
+    if (*task_count == 0) {
+        printf("No tasks to delete.\n");
+        return;
+    }
+
+    int id;
+    printf("Enter task ID to delete: ");
+    if (scanf("%d", &id) != 1) {
+        int c;
+        while ((c = getchar()) != '\n' && c != EOF) {}
+        printf("Invalid input.\n");
+        return;
+    }
+
+    int index = find_task_index_by_id(tasks, *task_count, id);
+    if (index == -1) {
+        printf("Task with ID %d not found.\n", id);
+        return;
+    }
+
+    for (int i = index; i < *task_count - 1; i++) {
+        tasks[i] = tasks[i + 1];
+    }
+
+    (*task_count)--;
+
+    printf("Task #%d deleted.\n", id);
+}
+
