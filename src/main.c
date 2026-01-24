@@ -56,6 +56,7 @@ int main(void) {
             delete_task(tasks, &task_count);
                 break;
             case 0:
+                save_tasks(tasks, task_count, next_id);
                 printf("Tasks saved.Exiting...\n");
                 break;
             default:

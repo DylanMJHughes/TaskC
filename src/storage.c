@@ -20,7 +20,7 @@ int load_tasks(Task tasks[], int *task_count, int *next_id) {
 void save_tasks(const Task tasks[], int task_count, int next_id) {
     FILE *fp = fopen(TASKS_FILE, "wb");
     if (!fp) {
-        printf("Failed to save tasks.\n");
+        perror("Failed to save tasks.\n");
         return;
     }
 
