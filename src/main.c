@@ -2,7 +2,9 @@
 #include <stdio.h>
 #include <string.h>
 #include "task.h"
+#include "storage.h"
 
+// Main application for TaskC
 static void print_menu(void) {
     printf("TaskC\n");
     printf("1) Add Task\n");
@@ -17,6 +19,15 @@ int main(void) {
     Task tasks[TASKS_MAX];
     int task_count = 0;
     int next_id = 1;
+
+    // Load existing tasks from storage
+    if (load_tasks(tasks, &task_count, &next_id)) {
+        printf("Loaded %d tasks.\n", task_count);
+    }
+
+    if (load_tasks(tasks, &task_count, &next_id)) {
+    printf("Loaded %d tasks.\n", task_count);
+    }
 
     int choice = -1;
 
@@ -45,7 +56,7 @@ int main(void) {
             delete_task(tasks, &task_count);
                 break;
             case 0:
-                printf("Exiting...\n");
+                printf("Tasks saved.Exiting...\n");
                 break;
             default:
                 printf("Not implemented yet.\n");
